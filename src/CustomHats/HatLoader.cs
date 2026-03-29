@@ -56,7 +56,7 @@ public static class HatLoader
     private static List<HatData> DiscoverHatBehaviours()
     {
         var hatBehaviours = new List<HatData>();
-        var path = LotusCosmeticsAdon.RuntimeLocation + "\\lotushats.catalog";
+        var path = LotusCosmeticsAdon.RuntimeLocation + (OperatingSystem.IsAndroid() ? "/lotushats.catalog" : "\\lotushats.catalog");
         Addressables.AddResourceLocator(Addressables.LoadContentCatalog(path).WaitForCompletion());
         var allHatLocations = Addressables.LoadResourceLocationsAsync("lotushats").WaitForCompletion();
         var assets = Addressables.LoadAssetsAsync<HatData>(allHatLocations, null, false).WaitForCompletion();
